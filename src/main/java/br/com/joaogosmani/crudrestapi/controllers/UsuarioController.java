@@ -1,5 +1,7 @@
 package br.com.joaogosmani.crudrestapi.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,12 @@ public class UsuarioController {
 	public ResponseEntity<Usuario> findById(@PathVariable Long id) {
 		Usuario usuario = service.findById(id);
 		return ResponseEntity.ok().body(usuario);
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<Usuario>> findAll() {
+		List<Usuario> usuarios = service.findAll();
+		return ResponseEntity.ok().body(usuarios);
 	}
 	
 }

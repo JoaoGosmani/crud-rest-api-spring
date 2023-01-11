@@ -1,5 +1,6 @@
 package br.com.joaogosmani.crudrestapi.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,10 @@ public class UsuarioService {
 	public Usuario findById(Long id) {
 		Optional<Usuario> usuario = repository.findById(id);
 		return usuario.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+	}
+	
+	public List<Usuario> findAll() {
+		return repository.findAll();
 	}
 	
 }
