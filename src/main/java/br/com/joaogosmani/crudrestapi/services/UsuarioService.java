@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.joaogosmani.crudrestapi.models.Usuario;
 import br.com.joaogosmani.crudrestapi.repositories.UsuarioRepository;
+import br.com.joaogosmani.crudrestapi.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class UsuarioService {
@@ -16,7 +17,7 @@ public class UsuarioService {
 	
 	public Usuario findById(Long id) {
 		Optional<Usuario> usuario = repository.findById(id);
-		return usuario.orElse(null);
+		return usuario.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
 	
 }
