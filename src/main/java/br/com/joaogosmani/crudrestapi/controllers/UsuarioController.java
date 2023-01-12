@@ -60,4 +60,10 @@ public class UsuarioController {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@GetMapping(value = "/nome")
+	public ResponseEntity<List<Usuario>> findByTitle(@RequestParam(value = "nome", defaultValue = "") String nome) {
+		List<Usuario> usuarios = service.findByNome(nome);
+		return ResponseEntity.ok().body(usuarios);
+	}
+	
 }

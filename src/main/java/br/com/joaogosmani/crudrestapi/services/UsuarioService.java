@@ -45,4 +45,8 @@ public class UsuarioService {
 		novoUsuario.setIdade(usuario.getIdade());
 	}
 	
+	public List<Usuario> findByNome(String nome) {
+		return repository.findByNomeContainingIgnoreCase(nome);
+	}
+	
 }
