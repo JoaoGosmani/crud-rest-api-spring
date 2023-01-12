@@ -25,4 +25,8 @@ public class UsuarioService {
 		return repository.findAll();
 	}
 	
+	public Usuario insert(Usuario usuario) {
+		return repository.save(usuario);
+	}
+	
 }
