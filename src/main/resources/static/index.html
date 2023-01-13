@@ -27,6 +27,7 @@
 </form>
 
 <button type="button" class="btn btn-primary" onclick="salvarUsuario()">Salvar</button>
+<button type="button" class="btn btn-secondary" onclick="document.getElementById('formCadastroUsuario').reset()">Novo</button>
 
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 
@@ -37,6 +38,18 @@
 		var id = $("#id").val();
 		var nome = $("#nome").val();
 		var idade = $("#idade").val();
+		
+		$.ajax({
+			method: "POST",
+			url: "usuarios",
+			data: JSON.stringify({id : id, nome : nome, idade : idade}),
+			contentType: "application/json; charset-utf-8",
+			success: function(response) {
+				alert("Salvo com sucesso!");
+			}
+		}).fail(function(xhr, status, errorThrown) {
+			alert("Erro ao salvar: " + xhr.responseText);
+		});
 	}
 </script>
 </body>
