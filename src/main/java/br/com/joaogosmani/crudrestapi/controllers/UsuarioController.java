@@ -47,9 +47,9 @@ public class UsuarioController {
 	}
 	
 	@DeleteMapping
-	public ResponseEntity<Void> deleteById(@RequestParam Long id) {
+	public ResponseEntity<String> deleteById(@RequestParam Long id) {
 		service.deleteById(id);
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().body("Usuário deletado com sucesso!");
 	}
 	
 	@PutMapping(value = "/{id}")
