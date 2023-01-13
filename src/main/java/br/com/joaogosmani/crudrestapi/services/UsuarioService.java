@@ -46,7 +46,7 @@ public class UsuarioService {
 	}
 	
 	public List<Usuario> findByNome(String nome) {
-		return repository.findByNomeContainingIgnoreCase(nome);
+		return repository.findByNome(nome);
 	}
 	
 }

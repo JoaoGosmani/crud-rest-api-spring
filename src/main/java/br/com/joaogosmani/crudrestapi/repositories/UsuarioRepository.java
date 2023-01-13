@@ -9,7 +9,7 @@ import br.com.joaogosmani.crudrestapi.models.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-	@Query(value = "select u from Usuario u where u.nome like %?1%")
-	List<Usuario> findByNomeContainingIgnoreCase(String nome);
+	@Query(value = "select u from Usuario u where upper(trim(u.nome)) like %?1%")
+	List<Usuario> findByNome(String nome);
 	
 }

@@ -26,8 +26,8 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService service;
 	
-	@GetMapping(value = "/{id}")
-	public ResponseEntity<Usuario> findById(@PathVariable Long id) {
+	@GetMapping(value = "/search")
+	public ResponseEntity<Usuario> findById(@RequestParam Long id) {
 		Usuario usuario = service.findById(id);
 		return ResponseEntity.ok().body(usuario);
 	}
@@ -61,8 +61,8 @@ public class UsuarioController {
 	}
 	
 	@GetMapping(value = "/nome")
-	public ResponseEntity<List<Usuario>> findByTitle(@RequestParam(value = "nome", defaultValue = "") String nome) {
-		List<Usuario> usuarios = service.findByNome(nome);
+	public ResponseEntity<List<Usuario>> findByNome(@RequestParam(value = "nome", defaultValue = "") String nome) {
+		List<Usuario> usuarios = service.findByNome(nome.trim().toUpperCase());
 		return ResponseEntity.ok().body(usuarios);
 	}
 	
