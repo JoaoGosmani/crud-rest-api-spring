@@ -39,11 +39,11 @@ public class UsuarioController {
 	}
 	
 	@PostMapping 
-	public ResponseEntity<Void> insert(@RequestBody Usuario usuario) {
+	public ResponseEntity<Usuario> insert(@RequestBody Usuario usuario) {
 		Usuario novoUsuario = service.insert(usuario);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}") 
 				.buildAndExpand(novoUsuario.getId()).toUri(); 
-		return ResponseEntity.created(uri).build();
+		return ResponseEntity.created(uri).body(novoUsuario);
 	}
 	
 	@DeleteMapping
